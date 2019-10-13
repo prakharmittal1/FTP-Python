@@ -3,11 +3,9 @@ import sys
 import os
 import getpass
 
-
 while True:
 
 	print("\nEnter Server Details:          \n")
-
 	option=str(input())
 	y=option.split(" ")
 
@@ -16,15 +14,32 @@ while True:
 			exit()
 
 	elif y[0]=='ftpclient':
-		ftpIP=y[1]
-		#ftp = ftplib.FTP(input(ftpIP))
+		while True:
+
+			ftpIP=y[1]
+			if ftpIP != '172.16.105.58':
+				print("Invalid Port Address \n")
+				print("\nEnter Server Details:          \n")
+				option1=str(input())
+				y=option.split(" ")
+			else:
+				break
 		ftp = ftplib.FTP()
 		ftp.connect(ftpIP,21)
-		#ftp=y[1]
-		Username=input("Username: ")
-		Password=getpass.getpass()
+		
+		while True:
+			Username=input("Username: ")
+			Password=getpass.getpass()
+			if (Username != 'prakhar' or Password != 'mittal'):
+				print("Invalid Username or Password \n")
+			else:
+				break
 		ftp.login(Username, Password)
 		print("\nConnected to Server Successfully ! \n ")
+
+	else:
+			print("Invalid Command, Please try again \n")
+			continue
 
 	while True:
 
@@ -44,10 +59,14 @@ while True:
 		elif x[0]=='upload':
 			filenameup=x[1]
 			def upload(ftp, filenameup):
-				ext = os.path.splitext(filenameup)[1]
-				ftp.storbinary("STOR " + filenameup, open(filenameup, "rb"), 1024)
+				try:
+					ext = os.path.splitext(filenameup)[1]
+					ftp.storbinary("STOR " + filenameup, open(filenameup, "rb"), 1024)
+				except:
+					print("Error")
+					return
 			upload(ftp, filenameup)
-			print(filenameup," : Uploaded successfully. \n")
+			print(filenameup,"\n")
 
 		elif x[0]=='get':
 			filename = x[1]
@@ -59,12 +78,11 @@ while True:
 					return
 			ftp.cwd('')
 			getFile(ftp,filename)
-			print(filename," : Downloaded successfully. \n ")
+			print(filename,"\n")
 
 		else:
-			print("Invalid Command, Please choose again \n")
+			print("Invalid Command, Please try again \n")
 			continue
 
 	ftp.quit()		
-
 ftp.quit()
