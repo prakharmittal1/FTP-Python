@@ -18,9 +18,9 @@ while True:
 
 			ftpIP=y[1]
 			if ftpIP != '172.16.105.58':
-				print("Invalid Port Address \n")
+				print("Invalid IP Address \n")
 				print("\nEnter Server Details:          \n")
-				option1=str(input())
+				option=str(input())
 				y=option.split(" ")
 			else:
 				break
