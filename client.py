@@ -20,7 +20,7 @@ while True:
 			if ftpIP != '172.16.105.58':
 				print("Invalid IP Address \n")
 				print("\nEnter Server Details:          \n")
-				option=str(input())
+				option1=str(input())
 				y=option.split(" ")
 			else:
 				break
