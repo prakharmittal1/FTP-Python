@@ -7,7 +7,7 @@ Steps to run the project:
 
 2)Go to D:\Demo\Client 1 in the command terminal and compile by: python client.py (Similar for Client 2)
 
-3)Then login via 'ftpclient 172.16.105.58'. (The IP address '172.16.105.58' and the Port '21' are hard coded within server.py)
+3)Then login via 'ftpclient IPAddress'. (The IP address '172.16.105.58' and the Port '21' are hard coded within server.py)
 
 4)Enter Username as 'prakhar' and Password as 'mittal' (Again, hard coded within server.py)
 
